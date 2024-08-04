@@ -22,7 +22,8 @@ class _LoginPageState extends State<LoginPage> {
 
       // Implement your login logic here. For example, you could check against a Firestore database:
       final FirebaseFirestore _db = FirebaseFirestore.instance;
-      final QuerySnapshot snapshot = await _db.collection('admin').where('username', isEqualTo: username).get();
+      final QuerySnapshot snapshot = await _db.collection('admin').get();
+     
 
       if (snapshot.docs.isNotEmpty) {
         final adminDoc = snapshot.docs.first;
@@ -35,7 +36,7 @@ class _LoginPageState extends State<LoginPage> {
         } else {
           // Invalid password, display error message
           ScaffoldMessenger.of(context).showSnackBar(
-            SnackBar(content: Text('Invalid password')),
+            SnackBar(content: Text('Incorrect Password !')),
           );
         }
       } else {
@@ -60,8 +61,8 @@ class _LoginPageState extends State<LoginPage> {
         child: Center(
           child: Container(
             constraints: BoxConstraints(
-              maxWidth: 800,
-              maxHeight: 400,
+              maxWidth: 1000,
+              maxHeight: 500,
             ),
             decoration: BoxDecoration(
               color: Colors.white.withOpacity(0.8),
@@ -202,9 +203,7 @@ class _LoginPageState extends State<LoginPage> {
                                 fontWeight: FontWeight.bold, // Set text to bold
                               ),
                             ),
-                            style: ElevatedButton.styleFrom(
-                              minimumSize: const Size(double.infinity, 50),
-                            ),
+                       
                           ),
                         ],
                       ),

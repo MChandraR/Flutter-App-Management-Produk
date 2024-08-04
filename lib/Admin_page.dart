@@ -3,6 +3,7 @@ import 'package:apa/login_page.dart';
 import 'package:apa/produk_page.dart';
 import 'package:apa/banner_page.dart';
 import 'package:apa/kategori_page.dart';
+import 'package:apa/tarik_dana.dart';
 
 class AdminPage extends StatefulWidget {
   @override
@@ -78,10 +79,14 @@ class _AdminPageState extends State<AdminPage> {
                       Icons.monetization_on,
                       'Tarik Dana',
                       () {
-                        setState(() {
-                          _selectedMenu = 'Tarik Dana';
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(builder: (context) => WalletPage()),
+                        ).then((_) {
+                          setState(() {
+                            _selectedMenu = 'Tarik Dana';
+                          });
                         });
-                        // Handle Tarik Dana navigation
                       },
                       _selectedMenu == 'Tarik Dana',
                     ),

@@ -1,20 +1,47 @@
 import 'package:flutter/material.dart';
 import 'package:apa/login_page.dart';
-import 'package:apa/main.dart';
 import 'package:apa/produk_page.dart';
+import 'package:apa/product_table.dart';
 import 'package:apa/banner_page.dart';
-import 'package:apa/kategori_page.dart';
 import 'package:apa/Admin_page.dart';
-import 'package:apa/tarik_dana.dart';
+import 'package:apa/penarikan_form.dart';
 import 'product_table.dart'; // Make sure this file exists with the ProductTable widget
 
-class ProdukPage extends StatefulWidget {
+class WalletPage extends StatefulWidget {
   @override
-  _ProdukPageState createState() => _ProdukPageState();
+  _WalletPageState createState() => _WalletPageState();
 }
 
-class _ProdukPageState extends State<ProdukPage> {
-  String _selectedMenu = 'Produk';
+class MyButton extends StatelessWidget {
+    @override
+    Widget build(BuildContext context) {
+      return ElevatedButton(
+        onPressed: () {
+          showDialog(
+            context: context,
+            builder: (BuildContext context) {
+              return AlertDialog(
+                title: Text('Pilih metode penarikan'),
+                content: FormWidget(),
+                actions: <Widget>[
+                  TextButton(
+                    child: Text('Tutup'),
+                    onPressed: () {
+                      Navigator.of(context).pop();
+                    },
+                  ),
+                ],
+              );
+            },
+          );
+        },
+        child: Text('Tarik Saldo'),
+      );
+    }
+  }
+
+class _WalletPageState extends State<WalletPage> {
+  String _selectedMenu = 'Tarik Dana';
 
   @override
   Widget build(BuildContext context) {
@@ -205,15 +232,48 @@ class _ProdukPageState extends State<ProdukPage> {
                       ),
                       SizedBox(height: 24),
                       Text(
-                        'Produk',
+                        'Penarikan',
                         style: TextStyle(
                           fontSize: 20,
                           fontWeight: FontWeight.bold,
                         ),
                       ),
-                      SizedBox(height: 16),
                       Expanded(
-                        child: ProductTable(), // Add the ProductTable here
+                        child: Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            Divider(color: Colors.black),
+                            Container(
+                              decoration: BoxDecoration(borderRadius: BorderRadius.circular(10), color: Color.fromARGB(100, 20, 255, 1)),
+                               child : Padding(
+                                  padding: const EdgeInsets.all(8.0),
+                                  child:Column(
+                                    children: [
+                                      Text(
+                                        "Saldo anda :",
+                                        textAlign: TextAlign.start,
+                                        ),
+                                      Text(
+                                        "Rp.1000.000",
+                                        style: TextStyle(fontWeight: FontWeight.bold, fontSize: 20),
+
+                                        ),
+                                        MyButton()
+                                    ],
+                                  ),
+                                )
+                               
+                            ),
+                            SizedBox(height: 20),
+                            Text(
+                              "History penarikan ",
+                              style: TextStyle(fontWeight: FontWeight.bold, fontSize: 20),
+                              ),
+                            Divider(color: Colors.black),
+                            SizedBox(height: 20),
+                            ProductTable()
+                          ],
+                        ) 
                       ),
                     ],
                   ),
