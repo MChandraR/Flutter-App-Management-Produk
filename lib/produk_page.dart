@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:apa/login_page.dart';
 import 'package:apa/main.dart';
+import 'package:apa/pemesanan.dart';
 import 'package:apa/produk_page.dart';
 import 'package:apa/banner_page.dart';
 import 'package:apa/kategori_page.dart';
@@ -134,10 +135,14 @@ class _ProdukPageState extends State<ProdukPage> {
                       Icons.shopping_cart,
                       'Pemesanan',
                       () {
-                        setState(() {
-                          _selectedMenu = 'Pemesanan';
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(builder: (context) => PemesananPage()),
+                        ).then((_) {
+                          setState(() {
+                            _selectedMenu = 'Pemesanan';
+                          });
                         });
-                        // Handle Pemesanan navigation
                       },
                       _selectedMenu == 'Pemesanan',
                     ),
