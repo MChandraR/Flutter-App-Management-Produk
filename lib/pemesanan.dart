@@ -1,51 +1,20 @@
+import 'package:apa/tarik_dana.dart';
 import 'package:flutter/material.dart';
 import 'package:apa/login_page.dart';
 import 'package:apa/produk_page.dart';
-import 'package:apa/pemesanan.dart';
 import 'package:apa/penarikan_table.dart';
 import 'package:apa/banner_page.dart';
 import 'package:apa/Admin_page.dart';
 import 'package:apa/penarikan_form.dart';
-import 'product_table.dart'; // Make sure this file exists with the ProductTable widget
+import 'pesanan_table.dart'; // Make sure this file exists with the ProductTable widget
 
-class WalletPage extends StatefulWidget {
+class PemesananPage extends StatefulWidget {
   @override
-  _WalletPageState createState() => _WalletPageState();
+  _PemesananPageState createState() => _PemesananPageState();
 }
 
-class MyButton extends StatelessWidget {
-    @override
-    Widget build(BuildContext context) {
-      return ElevatedButton(
-        onPressed: () {
-          showDialog(
-            context: context,
-            builder: (BuildContext context) {
-              return AlertDialog(
-                title: Text(
-                  'Pilih metode penarikan',
-                  style : TextStyle(fontWeight: FontWeight.bold, fontSize: 20)
-                  ),
-                content: FormWidget(),
-                actions: <Widget>[
-                  TextButton(
-                    child: Text('Tutup'),
-                    onPressed: () {
-                      Navigator.of(context).pop();
-                    },
-                  ),
-                ],
-              );
-            },
-          );
-        },
-        child: Text('Tarik Saldo'),
-      );
-    }
-  }
-
-class _WalletPageState extends State<WalletPage> {
-  String _selectedMenu = 'Tarik Dana';
+class _PemesananPageState extends State<PemesananPage> {
+  String _selectedMenu = 'Pemesanan';
 
   @override
   Widget build(BuildContext context) {
@@ -240,7 +209,7 @@ class _WalletPageState extends State<WalletPage> {
                       ),
                       SizedBox(height: 24),
                       Text(
-                        'Penarikan',
+                        'Pemesanan',
                         style: TextStyle(
                           fontSize: 20,
                           fontWeight: FontWeight.bold,
@@ -251,36 +220,128 @@ class _WalletPageState extends State<WalletPage> {
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
                             Divider(color: Colors.black),
-                            Container(
-                              decoration: BoxDecoration(borderRadius: BorderRadius.circular(10), color: Color.fromARGB(50, 0, 0, 0)),
-                               child : Padding(
-                                  padding: const EdgeInsets.symmetric(horizontal: 20, vertical :10),
-                                  child:Column(
-                                    children: [
-                                      Text(
-                                        "Saldo anda :",
-                                        textAlign: TextAlign.start,
+                                Row(
+                                  children: [
+                                    Expanded(
+                                      flex: 1,
+                                      child: 
+                                       Container(
+                                          margin: EdgeInsets.only(right : 10),
+                                          decoration: BoxDecoration(borderRadius: BorderRadius.circular(10), color: Color.fromARGB(255, 248, 223, 0)),
+                                          child : Padding(
+                                              padding: const EdgeInsets.symmetric(horizontal: 20, vertical :10),
+                                              child:Column(
+                                                children: [
+                                                  Text(
+                                                    "Menunggu Konfirmasi :",
+                                                    textAlign: TextAlign.start,
+                                                    style : TextStyle(color : Colors.white)
+                                                    ),
+                                                  Text(
+                                                    "0",
+                                                    style: TextStyle(fontWeight: FontWeight.bold, fontSize: 28, color: Colors.white),
+                                                    ),
+                                                  Text(
+                                                  "Pesanan",
+                                                  style: TextStyle(fontWeight: FontWeight.bold, fontSize: 20, color: Colors.white),
+                                                  )
+                                                ],
+                                              ),
+                                            )
                                         ),
-                                      Text(
-                                        "Rp.1000.000",
-                                        style: TextStyle(fontWeight: FontWeight.bold, fontSize: 20, color: Colors.green),
-
+                                      ),                                   
+                                    Expanded(
+                                      flex: 1,
+                                      child: Container(
+                                          margin: EdgeInsets.only(right : 10),
+                                          decoration: BoxDecoration(borderRadius: BorderRadius.circular(10), color: Color.fromARGB(255, 0, 38, 255)),
+                                          child : Padding(
+                                              padding: const EdgeInsets.symmetric(horizontal: 20, vertical :10),
+                                              child:Column(
+                                                children: [
+                                                  Text(
+                                                    "Pesanan Di Proses :",
+                                                    textAlign: TextAlign.start,
+                                                    style : TextStyle(color : Colors.white)
+                                                    ),
+                                                  Text(
+                                                    "0",
+                                                    style: TextStyle(fontWeight: FontWeight.bold, fontSize: 28, color: Colors.white),
+                                                    ),
+                                                  Text(
+                                                  "Pesanan",
+                                                  style: TextStyle(fontWeight: FontWeight.bold, fontSize: 20, color: Colors.white),
+                                                  )
+                                                ],
+                                              ),
+                                            )
                                         ),
-                                        SizedBox(height: 10,),
-                                        MyButton()
+                                      ),
+                                      Expanded(
+                                        flex: 1,
+                                        child: Container(
+                                            margin: EdgeInsets.only(right : 10),
+                                            decoration: BoxDecoration(borderRadius: BorderRadius.circular(10), color: Color.fromARGB(255, 255, 0, 128)),
+                                            child : Padding(
+                                                padding: const EdgeInsets.symmetric(horizontal: 20, vertical :10),
+                                                child:Column(
+                                                  children: [
+                                                    Text(
+                                                      "Pesanan Di Kirim :",
+                                                      textAlign: TextAlign.start,
+                                                      style : TextStyle(color : Colors.white)
+                                                      ),
+                                                    Text(
+                                                      "0",
+                                                      style: TextStyle(fontWeight: FontWeight.bold, fontSize: 28, color: Colors.white),
+                                                      ),
+                                                    Text(
+                                                    "Pesanan",
+                                                    style: TextStyle(fontWeight: FontWeight.bold, fontSize: 20, color: Colors.white),
+                                                    )
+                                                  ],
+                                                ),
+                                              )
+                                          ),
+                                        ),
+                                      Expanded(
+                                        flex: 1,
+                                        child: Container(
+                                            margin: EdgeInsets.only(right : 10),
+                                            decoration: BoxDecoration(borderRadius: BorderRadius.circular(10), color: Color.fromARGB(255, 0, 138, 30)),
+                                            child : Padding(
+                                                padding: const EdgeInsets.symmetric(horizontal: 20, vertical :10),
+                                                child:Column(
+                                                  children: [
+                                                    Text(
+                                                      "Pesanan Selesai :",
+                                                      textAlign: TextAlign.start,
+                                                      style : TextStyle(color : Colors.white)
+                                                      ),
+                                                    Text(
+                                                      "0",
+                                                      style: TextStyle(fontWeight: FontWeight.bold, fontSize: 28, color: Colors.white),
+                                                      ),
+                                                    Text(
+                                                    "Pesanan",
+                                                    style: TextStyle(fontWeight: FontWeight.bold, fontSize: 20, color: Colors.white),
+                                                    )
+                                                  ],
+                                                ),
+                                              )
+                                          ),
+                                        )
                                     ],
-                                  ),
-                                )
-                               
-                            ),
+                                ),
+                              
                             SizedBox(height: 20),
                             Text(
-                              "History penarikan ",
+                              "Daftar Pesanan ",
                               style: TextStyle(fontWeight: FontWeight.bold, fontSize: 20),
                               ),
                             Divider(color: Colors.black),
                             SizedBox(height: 20),
-                            PenarikanTable()
+                            PesananTable()
                           ],
                         ) 
                       ),

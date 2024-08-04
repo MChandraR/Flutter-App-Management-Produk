@@ -4,7 +4,7 @@ import 'package:apa/produk_page.dart';
 import 'package:apa/banner_page.dart';
 import 'package:apa/kategori_page.dart';
 import 'package:apa/tarik_dana.dart';
-
+import 'package:apa/pemesanan.dart';
 class AdminPage extends StatefulWidget {
   @override
   _AdminPageState createState() => _AdminPageState();
@@ -132,10 +132,14 @@ class _AdminPageState extends State<AdminPage> {
                       Icons.shopping_cart,
                       'Pemesanan',
                       () {
-                        setState(() {
-                          _selectedMenu = 'Pemesanan';
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(builder: (context) => PemesananPage()),
+                        ).then((_) {
+                          setState(() {
+                            _selectedMenu = 'Pemesanan';
+                          });
                         });
-                        // Handle Pemesanan navigation
                       },
                       _selectedMenu == 'Pemesanan',
                     ),

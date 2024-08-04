@@ -81,6 +81,9 @@ flutter:
    - assets/background.png
    - assets/dana.png
    - assets/gopay.png
+   - assets/ovo.png
+   - assets/qris.png
+   - assets/bank.png
   #   - images/a_dot_ham.jpeg
 fonts:
     - family: Nunito
